@@ -1,0 +1,154 @@
+<hr />
+
+<hr />
+<h1>NgClass & NgStyle</h1>
+<input type="text" required #nameInput4="ngModel" [(ngModel)]="person.name" />
+<hr
+  class="line-error"
+  [ngClass]="{
+    valid: nameInput4.valid,
+    invalid: nameInput4.invalid
+  }"
+/>
+<p class="message-error" [class.invalid]="nameInput4.invalid">
+  El campo es requerido
+</p>
+<div class="styles">
+  <div>
+    <input type="number" [(ngModel)]="box.width" />
+    <input type="number" [(ngModel)]="box.height" />
+    <input type="color" [(ngModel)]="box.background" />
+  </div>
+  <div>
+    <div
+      [ngStyle]="{
+        'width.px': box.width,
+        'height.px': box.height,
+        'background-color': box.background,
+        display: 'block'
+      }"
+    ></div>
+  </div>
+</div>
+
+<hr />
+<h1>Estilos a la lista de productos</h1>
+<input type="text" required #nameInput2="ngModel" [(ngModel)]="person.name" />
+<p class="message-error" [class.invalid]="nameInput2.invalid">
+  El campo es requerido
+</p>
+
+<label>Nombre</label>
+<input type="text" required #nameInput3="ngModel" [(ngModel)]="person.name" />
+<p [style.font-style]="nameInput3.invalid ? 'italic' : 'normal'">text</p>
+
+<div class="styles">
+  <div>
+    <input type="text" [(ngModel)]="widthImg" />
+  </div>
+  <div>
+    <img [style.width.%]="widthImg" [src]="person.avatar" alt="a" />
+  </div>
+</div>
+<hr />
+
+<div class="products--grid">
+  <div *ngFor="let product of products">
+    <img [src]="product.image" alt="image" />
+    <h2>Nombre: {{ product.name }}</h2>
+    <p>Precio: {{ product.price }}</p>
+  </div>
+</div>
+<hr />
+
+<h1>*ngSwitch</h1>
+<input type="text" required [(ngModel)]="color" />
+
+<div [ngSwitch]="color">
+  <p *ngSwitchCase="'azul'" style="color: blue">El color el Azul</p>
+  <p *ngSwitchCase="'verde'" style="color: green">El color el Verde</p>
+  <p *ngSwitchCase="'rojo'" style="color: red">El color el Rojo</p>
+  <p *ngSwitchDefault>No hay ningún color</p>
+</div>
+<hr />
+
+<h1>*ngFor ARRAY Objects</h1>
+<ul *ngFor="let person of peopleArray">
+  <li>Nombre: {{ person.firstname }}</li>
+  <li>Apellido: {{ person.lastname }}</li>
+  <li>Edad: {{ person.age }}</li>
+  <li *ngIf="person.country != null">country: {{ person.country }}</li>
+</ul>
+<hr />
+<h1>*ngFor</h1>
+<input type="text" required [(ngModel)]="newName" />
+<button (click)="addName()">Add name</button>
+<!-- <ul>
+  <li *ngFor="let str of myArray">
+    {{ str }}
+  </li>
+</ul> -->
+<ul>
+  <li *ngIf="myArray.length === 0" style="color: red">No hay items en array</li>
+  <li *ngFor="let str of myArray; index as i">
+    {{ i }}. {{ str }}
+    <button (click)="deleteName(i)">Delete</button>
+  </li>
+</ul>
+<hr />
+<h1>*ngIf</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<p *ngIf="person.name === 'Nicolas' && person.age === 18; else elseBlock">
+  my conditional content
+</p>
+<ng-template #elseBlock>
+  <p>Bloque de else</p>
+</ng-template>
+<hr />
+<h1>NgModel</h1>
+<p>Name {{ person.name }}</p>
+<input type="text" required #nameInput="ngModel" [(ngModel)]="person.name" />
+<p>Valid: {{ nameInput.valid }}</p>
+<p>Age {{ person.age }}</p>
+<input
+  type="number"
+  max="18"
+  min="10"
+  required
+  #ageInput="ngModel"
+  [(ngModel)]="person.age"
+/>
+<p>Valid: {{ ageInput.valid }}</p>
+<hr />
+<h1>Eventos</h1>
+<button [disabled]="btnDisable">Enviar</button>
+<button (click)="toogleButton()">toggle Button</button>
+<p>Edad {{ person.age }}</p>
+<div class="box" (scroll)="onScroll($event)">
+  <p>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s, when an unknown printer took a galley of type and scrambled it to
+    make a type specimen book. It has survived not only five centuries, but also
+    the leap into electronic typesetting, remaining essentially unchanged. It
+    was popularised in the 1960s with the release of Letraset sheets containing
+    Lorem Ipsum passages, and more recently with desktop publishing software
+    like Aldus PageMaker including versions of Lorem Ipsum.
+  </p>
+</div>
+<p>Name {{ person.name }}</p>
+<!-- <input type="text" [value]="person.name" (keyup)="changeName($event)" /> -->
+
+<hr />
+<h1>Propiedades</h1>
+<input type="text" [value]="person.name" />
+<button [disabled]="btnDisable">Enviar</button>
+<progress max="100" [value]="person.age"></progress>
+<!-- <img width="100" [src]="person.avatar" alt="image" /> -->
+<hr />
+<h1>Hola Mundo</h1>
+<h2>{{ "Hola Mudno".repeat(5) }}</h2>
+<p>3 + 3 = {{ 3 + 3 }}</p>
+<h1>{{ title }}</h1>
+<h1>{{ age }}</h1>
+<!-- <img src="{{ img }}" alt="image" /> -->
