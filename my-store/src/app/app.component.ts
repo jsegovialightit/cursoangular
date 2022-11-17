@@ -15,7 +15,11 @@ export class AppComponent {
   img =
     'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png';
   btnDisable = true;
-
+  register = {
+    name: '',
+    email: '',
+    password: '',
+  };
   person = {
     name: 'Nicolas',
     age: 18,
@@ -108,5 +112,8 @@ export class AppComponent {
   }
   deleteName(index: number) {
     this.myArray.splice(index, 1);
+  }
+  onRegister() {
+    console.log(this.register);
   }
 }
