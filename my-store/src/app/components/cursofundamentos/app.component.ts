@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Person } from './person.modell';
-import { Product } from './product.model';
+import { Person } from '../../core/model/person.model';
+import { Product } from '../../core/model/product.model';
 
 @Component({
   selector: 'app-root',
