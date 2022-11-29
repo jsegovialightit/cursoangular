@@ -117,7 +117,7 @@
   <li>Nombre: {{ person.firstname }}</li>
   <li>Apellido: {{ person.lastname }}</li>
   <li>Edad: {{ person.age }}</li>
-  <li *ngIf="person.country != null">country: {{ person.country }}</li>
+  <li *ngIf="person.country !== null">country: {{ person.country }}</li>
 </ul>
 <hr />
 <h1>*ngFor</h1>

@@ -1,12 +1,14 @@
+//import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { Component } from '@angular/core';
 import { Person } from '../../core/model/person.model';
-import { Product } from '../../core/model/product.model';
+//import { Product } from '../../core/model/product.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+//export class AppComponent implements OnChanges {
 export class AppComponent {
   widthImg = 10;
   title = 'my-store';
@@ -53,41 +55,28 @@ export class AppComponent {
     },
   ];
 
-  color: string = 'verde';
+  color = 'verde';
 
-  products: Product[] = [
-    {
-      name: 'EL mejor juguete',
-      price: 565,
-      image: './assets/images/toy.jpg',
-      category: 'all',
-    },
-    {
-      name: 'Bicicleta casi nueva',
-      price: 356,
-      image: './assets/images/bike.jpg',
-    },
-    {
-      name: 'Colleción de albumnes',
-      price: 34,
-      image: './assets/images/album.jpg',
-    },
-    {
-      name: 'Mis libros',
-      price: 23,
-      image: './assets/images/books.jpg',
-    },
-    {
-      name: 'Casa para perro',
-      price: 34,
-      image: './assets/images/house.jpg',
-    },
-    {
-      name: 'Gafas',
-      price: 3434,
-      image: './assets/images/glasses.jpg',
-    },
-  ];
+  // public products: Product[] = [
+  //   {
+  //     id: '1',
+  //     name: 'Automobil de juguete',
+  //     price: 100,
+  //     image: '../../../assets/images/toy.jpg',
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Muñeca de trapo',
+  //     price: 180,
+  //     image: '../../../assets/images/house.jpg',
+  //   },
+  //   {
+  //     id: '3',
+  //     name: 'Pelota de futbol',
+  //     price: 120,
+  //     image: '../../../assets/images/bike.jpg',
+  //   },
+  // ];
 
   toogleButton() {
     this.btnDisable = !this.btnDisable;
@@ -116,4 +105,26 @@ export class AppComponent {
   onRegister() {
     console.log(this.register);
   }
+
+  imgParent = '';
+  imgChild = '';
+  showImg = true;
+  url = '../../../assets/images/' + this.imgParent + '.jpg';
+
+  onLoaded(img: string) {
+    this.imgChild = img;
+    console.log('log en el padre', img);
+  }
+
+  toggleImg() {
+    this.showImg = !this.showImg;
+    this.url = '../../../assets/images/' + this.imgParent + '.jpg';
+    console.log('url: ' + this.url);
+  }
+
+  // ngOnChanges(changes: SimpleChanges) {
+  //   this.url = '../../../assets/images/' + this.imgParent + '.jpg';
+  //   console.log('url: ' + this.url);
+  //   console.log('person name: ' + this.person.name);
+  // }
 }
